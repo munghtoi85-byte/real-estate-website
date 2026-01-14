@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Night Ware – Size Guide</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      color: #222;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #222;
+      padding: 10px 20px;
+    }
+
+    nav .logo {
+      height: 50px;
+      width: auto;
+    }
+
+    #currencySelector {
+      padding: 6px 12px;
+      border-radius: 5px;
+      border: none;
+      background: #f0c040;
+      color: #222;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #currencySelector:hover {
+      background: #d4a017;
+    }
+
+    nav .search-box {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    nav .search-box input {
+      padding: 8px;
+      width: 250px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+    }
+
+    #suggestions {
+      position: absolute;
+      top: 40px;
+      background: white;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none;
+    }
+
+    #suggestions p {
+      margin: 0;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    #suggestions p:hover {
+      background: #f0c040;
+    }
+
+    nav .search-box button {
+      padding: 8px 15px;
+      border: none;
+      background: #f0c040;
+      color: #222;
+      border-radius: 2px 7px 7px 2px;
+      cursor: pointer;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    nav ul li a:hover {
+      color: #f0c040;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2em;
+      color: white;
+      cursor: pointer;
+    }
+
+    .cart {
+      position: relative;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .cart span {
+      position: absolute;
+      top: -9px;
+      right: -13px;
+      background: crimson;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 5px;
+      font-weight: bold;
+      font-size: 1em;
+    }
+    
+    .add-to-cart {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .add-to-cart:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    .add-to-cart:active {
+      transform: translateY(0);
+    }
+
+    header {
+      background: #111;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+      color: #f0c040;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #111;
+      border-bottom: 2px solid #f0c040;
+      padding-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #f0c040;
+      color: #111;
+    }
+
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    .brand {
+      margin-bottom: 40px;
+    }
+
+    footer {
+      background: #0d0d0d;
+      color: #d9d9d9;
+      padding: 60px 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    footer > div {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    footer h2 {
+      color: #fff;
+      letter-spacing: 2px;
+      border: none;
+      padding: 0;
+    }
+
+    footer h4 {
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      line-height: 2;
+    }
+
+    footer ul li a {
+      color: #d9d9d9;
+      text-decoration: none;
+    }
+
+    footer ul li a:hover {
+      color: #f0c040;
+    }
+
+    .payment-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .payment-badges span {
+      background: #222;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: #d9d9d9;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      color: #f0c040;
+    }
+
+    footer hr {
+      border: 0;
+      border-top: 1px solid #333;
+      margin: 40px 0;
+    }
+
+    footer p {
+      text-align: center;
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="Dream Weaver testing file/viber_image_2026-01-06_21-22-25-868.jpg" alt="Shop Logo" class="logo">
+    <select id="currencySelector" onchange="changeCurrency()">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="MMK">MMK</option>
+    </select>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search night wear...">
+      <div id="suggestions"></div>
+      <button>Search</button>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <ul id="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">Night Wear</a></li>
+      <li><a href="contact of luxury.index.html">Contact</a></li>
+    </ul>
+
+    <div class="cart">
+      🛒<span id="cartcount">0</span>
+    </div>
+  </nav>
+
+  <section class="brand">
+    <h2>L'Agent by Agent Provocateur – Bra Sizing</h2>
+    <table>
+      <tr>
+        <th>UK / USA</th>
+        <th>FRANCE</th>
+        <th>EURO</th>
+        <th>AUS</th>
+      </tr>
+      <tr>
+        <td>32A – 34E</td>
+        <td>85A – 90E</td>
+        <td>70A – 75E</td>
+        <td>10A – 12E</td>
+      </tr>
+      <tr>
+        <td>36A – 36E</td>
+        <td>95A – 95E</td>
+        <td>80A – 80E</td>
+        <td>14A – 14E</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="brand">
+    <h2>L'Agent – Body Sizing</h2>
+    <table>
+      <tr>
+        <th>Size</th>
+        <th>Waist</th>
+        <th>Hips</th>
+        <th>UK</th>
+        <th>USA</th>
+        <th>EUR</th>
+      </tr>
+      <tr>
+        <td>XS</td>
+        <td>23–25"</td>
+        <td>33–35"</td>
+        <td>6–8</td>
+        <td>2–4</td>
+        <td>36–38</td>
+      </tr>
+      <tr>
+        <td>S</td>
+        <td>25–27"</td>
+        <td>35–37"</td>
+        <td>8–10</td>
+        <td>4–6</td>
+        <td>38–40</td>
+      </tr>
+      <tr>
+        <td>M</td>
+        <td>27–29"</td>
+        <td>37–39"</td>
+        <td>10–12</td>
+        <td>6–8</td>
+        <td>40–42</td>
+      </tr>
+      <tr>
+        <td>L</td>
+        <td>29–31"</td>
+        <td>39–41"</td>
+        <td>12–14</td>
+        <td>8–10</td>
+        <td>44–46</td>
+      </tr>
+      <tr>
+        <td>XL</td>
+        <td>31–33"</td>
+        <td>41–43"</td>
+        <td>14–16</td>
+        <td>10–12</td>
+        <td>46–48</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="brand">
+    <h2>Fleur of England Size Guide</h2>
+    <table>
+      <tr>
+        <th>Size</th>
+        <th>UK / AUS / NZ</th>
+        <th>US</th>
+        <th>EUR</th>
+        <th>Italian</th>
+        <th>Russian</th>
+        <th>Japanese</th>
+        <th>French</th>
+      </tr>
+      <tr>
+        <td>S</td>
+        <td>8–10</td>
+        <td>4–6</td>
+        <td>36–38</td>
+        <td>40–42</td>
+        <td>42–44</td>
+        <td>9–11</td>
+        <td>36–38</td>
+      </tr>
+      <tr>
+        <td>M</td>
+        <td>10–12</td>
+        <td>6–8</td>
+        <td>38–40</td>
+        <td>42–44</td>
+        <td>44–46</td>
+        <td>11–13</td>
+        <td>38–40</td>
+      </tr>
+      <tr>
+        <td>L</td>
+        <td>12–14</td>
+        <td>8–10</td>
+        <td>40–42</td>
+        <td>44–46</td>
+        <td>46–48</td>
+        <td>13–15</td>
+        <td>40–42</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="brand">
+    <h2>Marjolaine Size Guide</h2>
+    <table>
+      <tr>
+        <th>French Size</th>
+        <th>UK / AUS / NZ</th>
+        <th>US</th>
+        <th>EUR</th>
+        <th>Italian</th>
+        <th>Japanese</th>
+        <th>Russian</th>
+      </tr>
+      <tr>
+        <td>36 (S)</td>
+        <td>8</td>
+        <td>4</td>
+        <td>34</td>
+        <td>40</td>
+        <td>9</td>
+        <td>42</td>
+      </tr>
+      <tr>
+        <td>38 (M)</td>
+        <td>10</td>
+        <td>6</td>
+        <td>36</td>
+        <td>42</td>
+        <td>11</td>
+        <td>44</td>
+      </tr>
+      <tr>
+        <td>40 (L)</td>
+        <td>12</td>
+        <td>8</td>
+        <td>38</td>
+        <td>44</td>
+        <td>13</td>
+        <td>46</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="brand">
+    <h2>Zumruduanka Size Guide</h2>
+    <table>
+      <tr>
+        <th>Size</th>
+        <th>UK / AUS / NZ</th>
+        <th>US</th>
+        <th>EUR</th>
+        <th>Italian</th>
+        <th>Japanese</th>
+        <th>Russian</th>
+        <th>French</th>
+      </tr>
+      <tr>
+        <td>S</td>
+        <td>6–8</td>
+        <td>2–4</td>
+        <td>32–34</td>
+        <td>38–40</td>
+        <td>7–9</td>
+        <td>40–42</td>
+        <td>34–36</td>
+      </tr>
+      <tr>
+        <td>M</td>
+        <td>8–10</td>
+        <td>4–6</td>
+        <td>34–36</td>
+        <td>40–42</td>
+        <td>9–11</td>
+        <td>42–44</td>
+        <td>36–38</td>
+      </tr>
+      <tr>
+        <td>L</td>
+        <td>10–12</td>
+        <td>6–8</td>
+        <td>36–38</td>
+        <td>42–44</td>
+        <td>11–13</td>
+        <td>44–46</td>
+        <td>38–40</td>
+      </tr>
+    </table>
+  </section>
+
+  <footer>
+    <div>
+      <div>
+        <h2>Luxury Night Ware</h2>
+        <p style="line-height:1.6;">Premium night wear clothes designed for elegance, comfort, and timeless style. Shop securely and enjoy worldwide delivery.</p>
+      </div>
+      
+      <div>
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/return-policy">Return & Refund Policy</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4>Payment Options</h4>
+        <div class="payment-badges">
+          <span>KBZ Pay</span>
+          <span>Wave Pay</span>
+          <span>Pioneer Pay</span>
+          <span>PayPal</span>
+          <span>Visa</span>
+          <span>MasterCard</span>
+          <span>AYA Pay</span>
+        </div>
+      </div>
+      
+      <div>
+        <h4>Get in Touch</h4>
+        <p>Email: support@luxurynightware.com</p>
+        <p>Phone: +95-xxx-xxx-xxx</p>
+        <p>Yangon, Myanmar</p>
+        <div class="social-links">
+          <a href="#">🌐 Facebook</a>
+          <a href="#">📸 Instagram</a>
+          <a href="#">🐦 Twitter</a>
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    <p>© 2026 Luxury Night Ware Clothes. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function changeCurrency() {
+      // Currency change functionality
+    }
+
+    function toggleMenu() {
+      // Menu toggle functionality
+    }
+  </script>
+</body>
+</html>
+

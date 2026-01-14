@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+         body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+     nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #222;
+      padding: 10px 20px;
+    }
+
+    nav .logo {
+      height: 50px;
+      width: auto;
+    }
+      /* Currency selector dropdown */
+#currencySelector {
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: none;
+  background: #f0c040;   /* luxury gold tone */
+  color: #222;           /* dark text for contrast */
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Hover effect */
+#currencySelector:hover {
+  background: #d4a017;   /* slightly darker gold */
+}
+
+/* Optional: make it consistent height with search box */
+.currency-selector {
+  display: flex;
+  align-items: center;
+}
+    nav .search-box {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    nav .search-box input {
+      padding: 8px;
+      width: 250px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+    }
+
+    #suggestions {
+      position: absolute;
+      top: 40px;
+      background: white;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none;
+    }
+
+    #suggestions p {
+      margin: 0;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    #suggestions p:hover {
+      background: #f0c040;
+    }
+
+    nav .search-box button {
+      padding: 8px 15px;
+      border: none;
+      background: #f0c040;
+      color: #222;
+      border-radius: 2px 7px 7px 2px;
+      cursor: pointer;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    nav ul li a:hover {
+      color: #f0c040;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2em;
+      color: white;
+      cursor: pointer;
+    }
+
+    .cart {
+      position: relative;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .cart span {
+      position: absolute;
+      top: -9px;
+      right: -13px;
+      background: crimson;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 5px;
+      font-weight: bold;
+      font-size: 1em;
+    }
+    
+    .add-to-cart {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .add-to-cart:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    .add-to-cart:active {
+      transform: translateY(0);
+    }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+    <img src="Dream Weaver testing file/viber_image_2026-01-06_21-22-25-868.jpg" alt="Shop Logo" class="logo">
+    <select id="currencySelector" onchange="changeCurrency()">
+  <option value="USD">USD</option>
+  <option value="EUR">EUR</option>
+  <option value="MMK">MMK</option>
+</select>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search night wear...">
+      <div id="suggestions"></div>
+      <button>Search</button>
+    </div>
+
+    <!-- Hamburger icon -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <!-- Menu -->
+    <ul id="menu">
+      <li><a href="LUXURY Clothes index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="size-guide.index.html">Size Guide</a></li>
+      <li><a href="contact of luxury.index.html">Contact</a></li>
+    </ul>
+
+    <!-- Cart -->
+    <div class="cart">
+      🛒<span id="cartcount">0</span>
+    </div>
+    
+  </nav>
+    <section id="contact" style="padding:60px; background:#f9f9f9; font-family:'Poppins', sans-serif;">
+  <h2 style="text-align:center; margin-bottom:40px; font-size:28px; color:#222;">Get in Touch</h2>
+  
+  <div style="display:grid; grid-template-columns:1fr 2fr; gap:40px; align-items:start;">
+    
+    <!-- Google Map -->
+    <div>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3820.123456789!2d96.123456!3d16.805123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c194abcd12345%3A0x123456789abcdef!2sSanchaung%2C%20Yangon%2C%20Myanmar!5e0!3m2!1sen!2smm!4v1700000000000"
+        width="100%" height="400" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+    <!--  -->
+    <!-- Contact Details + Form -->
+    <div>
+      <h3 style="margin-bottom:15px; color:#111;">Luxury Night Ware Clothes</h3>
+      <p>📍 Sanchaung Township, Yangon, Myanmar</p>
+      <p>📧 <a href="mailto:support@luxurynightware.com" style="color:#b12704; text-decoration:none;">support@luxurynightware.com</a></p>
+      <p>📞 +95 9785431532</p>
+      
+      <form id="contactForm" style="background:#fff; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); margin-top:20px;">
+        <label>Name</label>
+        <input type="text" name="name" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:6px;">
+        
+        <label>Email</label>
+        <input type="email" name="email" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:6px;">
+        
+        <label>Message</label>
+        <textarea name="message" rows="5" required style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:6px;"></textarea>
+        
+        <button type="submit" style="padding:12px 20px; background:#111; color:#fff; border:none; border-radius:6px; cursor:pointer;">
+          Send Message
+        </button>
+      </form>
+      
+      <!-- Success Message -->
+      <p id="formMessage" style="margin-top:15px; font-weight:bold; color:green; display:none;">
+        ✅ Thank you! Your message has been sent.
+      </p>
+    </div>
+    
+  </div>
+</section>
+ <footer style="background:#0d0d0d; color:#d9d9d9; padding:60px 20px; font-family:'Poppins', sans-serif;">
+  <div style="max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:40px;">
+    
+    <!-- Brand -->
+    <div>
+      <h2 style="color:#fff; letter-spacing:2px;">Luxury Night Ware</h2>
+      <p style="line-height:1.6;">Premium night wear clothes designed for elegance, comfort, and timeless style. Shop securely and enjoy worldwide delivery.</p>
+    </div>
+    
+    <!-- FAQ & Policy -->
+    <div>
+      <h4 style="color:#fff; margin-bottom:15px;">Customer Care</h4>
+      <ul style="list-style:none; padding:0; line-height:2;">
+        <li><a href="/faq" style="color:#d9d9d9; text-decoration:none;">FAQ</a></li>
+        <li><a href="/return-policy" style="color:#d9d9d9; text-decoration:none;">Return & Refund Policy</a></li>
+        <li><a href="/privacy-policy" style="color:#d9d9d9; text-decoration:none;">Privacy Policy</a></li>
+        <li><a href="/terms" style="color:#d9d9d9; text-decoration:none;">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    
+    <!-- Payment Methods -->
+    <div>
+      <h4 style="color:#fff; margin-bottom:15px;">Payment Options</h4>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">KBZ Pay</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">Wave Pay</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">Pioneer Pay</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">PayPal</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">Visa</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">MasterCard</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">AYA Pay</span>
+      </div>
+    </div>
+    
+    <!-- Contact -->
+    <div>
+      <h4 style="color:#fff; margin-bottom:15px;">Get in Touch</h4>
+      <p>Email: support@luxurynightware.com</p>
+      <p>Phone: +95-xxx-xxx-xxx</p>
+      <p>Yangon, Myanmar</p>
+      <div style="margin-top:10px; display:flex; gap:15px;">
+        <a href="#" style="color:#d9d9d9; text-decoration:none;">🌐 Facebook</a>
+        <a href="#" style="color:#d9d9d9; text-decoration:none;">📸 Instagram</a>
+        <a href="#" style="color:#d9d9d9; text-decoration:none;">🐦 Twitter</a>
+      </div>
+    </div>
+  </div>
+  
+  <hr style="border:0; border-top:1px solid #333; margin:40px 0;">
+  <p style="text-align:center; font-size:14px; color:#999;">
+    © 2026 Luxury Night Ware Clothes. All rights reserved.
+  </p>
+</footer>
+
+<script>
+// Add "cool" JS effects
+const form = document.getElementById("contactForm");
+const message = document.getElementById("formMessage");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault(); // stop normal submit
+  
+  // Simple validation feedback
+  let valid = true;
+  form.querySelectorAll("input, textarea").forEach(field => {
+    if (!field.value.trim()) {
+      field.style.borderColor = "red";
+      valid = false;
+    } else {
+      field.style.borderColor = "#ccc";
+    }
+  });
+  
+  if (!valid) {
+    alert("⚠️ Please fill out all fields correctly.");
+    return;
+  }
+  
+  // Fake "sending" animation
+  message.style.display = "block";
+  message.style.opacity = 0;
+  let opacity = 0;
+  const fadeIn = setInterval(() => {
+    if (opacity < 1) {
+      opacity += 0.05;
+      message.style.opacity = opacity;
+    } else {
+      clearInterval(fadeIn);
+    }
+  }, 30);
+  
+  // Reset form after 2 seconds
+  setTimeout(() => {
+    form.reset();
+  }, 2000);
+});
+</script>
+</body>
+</html>

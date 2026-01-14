@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Online Shop</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #222;
+      padding: 10px 20px;
+    }
+
+    nav .logo {
+      height: 50px;
+      width: auto;
+    }
+      /* Currency selector dropdown */
+#currencySelector {
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: none;
+  background: #f0c040;   /* luxury gold tone */
+  color: #222;           /* dark text for contrast */
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Hover effect */
+#currencySelector:hover {
+  background: #d4a017;   /* slightly darker gold */
+}
+
+/* Optional: make it consistent height with search box */
+.currency-selector {
+  display: flex;
+  align-items: center;
+}
+    nav .search-box {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    nav .search-box input {
+      padding: 8px;
+      width: 250px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+    }
+
+    #suggestions {
+      position: absolute;
+      top: 40px;
+      background: white;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none;
+    }
+
+    #suggestions p {
+      margin: 0;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    #suggestions p:hover {
+      background: #f0c040;
+    }
+
+    nav .search-box button {
+      padding: 8px 15px;
+      border: none;
+      background: #f0c040;
+      color: #222;
+      border-radius: 2px 7px 7px 2px;
+      cursor: pointer;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    nav ul li a:hover {
+      color: #f0c040;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2em;
+      color: white;
+      cursor: pointer;
+    }
+
+    .cart {
+      position: relative;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .cart span {
+      position: absolute;
+      top: -9px;
+      right: -13px;
+      background: crimson;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 5px;
+      font-weight: bold;
+      font-size: 1em;
+    }
+    
+    .add-to-cart {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .add-to-cart:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    .add-to-cart:active {
+      transform: translateY(0);
+    }
+
+    /* Carousel Styles */
+   /* Carousel Container */
+.carousel {
+  position: relative;
+  width: 100%;          /* full width like real sites */
+  max-width: 1200px;    /* limit max size */
+  height: 500px;        /* taller for full view */
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Images */
+.slides img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    /* show full image nicely */
+  display: none;
+}
+
+.slides img.active {
+  display: block;
+  animation: fade 0.8s ease-in-out;
+}
+
+@keyframes fade {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+    /* Intro Section */
+.intro {
+  padding: 60px 20px;
+  background: #fdfdfd;
+  font-family: 'Playfair Display', serif; /* elegant font */
+  color: #222;
+  text-align: center;
+}
+
+/* Heading */
+.intro h1 {
+  font-size: 2.8em;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.intro h1 strong {
+  color: #d4a017; /* gold accent */
+}
+
+/* Tagline */
+.intro .tagline {
+  font-size: 1.4em;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* Paragraphs with alignment */
+.intro-text {
+  max-width: 1000px;
+  margin: auto;
+  line-height: 1.8;
+}
+
+.intro-text p {
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+/* Alignment classes */
+.intro-text .left {
+  text-align: left;
+}
+
+.intro-text .right {
+  text-align: right;
+}
+
+.intro-text .center {
+  text-align: center;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .intro-text .left,
+  .intro-text .right {
+    text-align: center; /* stack nicely on mobile */
+  }
+}
+/* Controls */
+.prev, .next {
+  position: absolute;
+  top: 50%; 
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 2em;
+  border-radius: 50%;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+.collection {
+  padding: 60px 20px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.collection h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2em;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.item {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+.item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item h3 {
+  margin: 15px 0 5px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.price {
+  font-weight: bold;
+  color: #d4a017; /* gold accent */
+}
+
+/* Album styling */
+.album .album-grid {
+  display: none;
+  margin-top: 15px;
+}
+
+.album:hover .album-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.album .sub-item img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.album .sub-item p {
+  font-size: 0.9em;
+  margin-top: 5px;
+  color: #444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+      nav ul.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+    
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="Dream Weaver testing file/viber_image_2026-01-06_21-22-25-868.jpg" alt="Shop Logo" class="logo">
+    <div class="currency-selector">
+      <select id="currencySelector" onchange="changeCurrency()">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="MMK">MMK</option>
+      </select>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search night wear...">
+      <div id="suggestions"></div>
+      <button>Search</button>
+    </div>
+
+    <!-- Hamburger icon -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <!-- Menu -->
+    <ul id="menu">
+      <li><a href="LUXURY Clothes index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="size-guide.index.html">Size Guide</a></li>
+      <li><a href="contact of luxury.index.html">Contact</a></li>
+    </ul>
+
+    <!-- Cart -->
+    <div class="cart">
+      🛒<span id="cartcount">0</span>
+    </div>
+    
+  </nav>
+
+  <!-- Carousel -->
+ <!-- Carousel -->
+<div class="carousel">
+  <div class="slides">
+    <img src="Dream Weaver testing file/img of luxury/slide-one-1812X559.webp" alt="Photo 1" loading="eager" decoding="async">
+    <img src="Dream Weaver testing file/img of luxury/Songbird-boudpoir-bra-and-pyjama-trouser-1-scaled-e1673870301372-1812X559.webp" alt="Photo 2" loading="lazy" decoding="async">
+    <img src="Dream Weaver testing file/img of luxury/photo_2022-06-06_02-24-15.jpg" alt="Photo 3" loading="lazy" decoding="async">
+    <img src="Dream Weaver testing file/img of luxury/maksim-istomin-wmTmcpeHzrI-unsplash.jpg" alt="Photo 4" loading="lazy" decoding="async">
+    <img src="Dream Weaver testing file/img of luxury/imana-vLeavGOJuEI-unsplash.jpg" alt="Photo 5" loading="lazy" decoding="async">
+  </div>
+
+  <!-- Controls -->
+  <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+  <button class="next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+<section class="intro">
+  <h1>Welcome to <strong>Luxury Night Ware</strong> Clothes</h1>
+  <p class="tagline">Elegance after dark, comfort for every night.</p>
+
+  <div class="intro-text">
+    <p class="left">
+      At <strong>Luxury Night Ware</strong>, we believe every evening should feel extraordinary.  
+      Our curated collection of premium nightwear and lingerie is designed to help you look and feel beautiful every single day.
+    </p>
+
+    <p class="right">
+      From elegant silk gowns and satin babydolls to chic pajama sets and statement pieces,  
+      you’ll discover creations inspired by the world’s most exclusive designers.
+    </p>
+
+    <p class="center">
+      Each purchase is beautifully gift‑wrapped and delivered with care — because at <strong>Luxury Night Ware</strong>, elegance is in the details.
+    </p>
+  </div>
+</section> 
+<section class="collection">
+  <h2>View Our Collection</h2>
+  <div class="grid">
+
+    <!-- Album 1 -->
+    <div class="item album">
+      <img src="Dream Weaver testing file/img of luxury/bella-pon-fruitsia-wcgCFUi_Zws-unsplash.jpg" alt="Silk Collection" loading="lazy" decoding="async">
+      <h3>Silk Collection</h3>
+      <p class="price" data-base="99" data-prefix="From">From $99</p>
+      <div class="album-grid">
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/boy silk.jpg" alt="Silk Robe" loading="lazy" decoding="async">
+          <p class="price" data-base="99" data-prefix="Silk Robe">Silk Robe — $99</p>
+          <button class="add-to-cart" data-name="Silk Robe" data-price="99" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/mg of luxury/globaldsio-it-solution-mA7yW47AIOU-unsplash.jpg" alt="Silk Chemise" loading="lazy" decoding="async">
+          <p class="price" data-base="120" data-prefix="Silk Chemise">Silk Chemise — $120</p>
+          <button class="add-to-cart" data-name="Silk Chemise" data-price="120" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/happysurd-photography-7q-Z4IrqyYY-unsplash.jpg" alt="Silk Gown" loading="lazy" decoding="async">
+          <p class="price" data-base="150" data-prefix="Silk Gown">Silk Gown — $150</p>
+          <button class="add-to-cart" data-name="Silk Gown" data-price="150" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Album 2 -->
+    <div class="item album">
+      <img src="Dream Weaver testing file/img of luxury/cotton man.jpg" alt="Cotton Collection" loading="lazy" decoding="async">
+      <h3>Cotton Collection</h3>
+      <p class="price" data-base="80" data-prefix="From">From $80</p>
+      <div class="album-grid">
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/girl pajamas1.jpg" alt="Cotton Pajama" loading="lazy" decoding="async">
+          <p class="price" data-base="80" data-prefix="Cotton Pajama">Cotton Pajama — $80</p>
+          <button class="add-to-cart" data-name="Cotton Pajama" data-price="80" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/cotton gown pj1.jpg" alt="Cotton Gown" loading="lazy" decoding="async">
+          <p class="price" data-base="95" data-prefix="Cotton Gown">Cotton Gown — $95</p>
+          <button class="add-to-cart" data-name="Cotton Gown" data-price="95" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/cotton set 2.jpg" alt="Cotton Set" loading="lazy" decoding="async">
+          <p class="price" data-base="110" data-prefix="Cotton Set">Cotton Set — $110</p>
+          <button class="add-to-cart" data-name="Cotton Set" data-price="110" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Album 3 -->
+    <div class="item album">
+      <img src="Dream Weaver testing file/img of luxury/satin1.jpg" alt="Satin Collection" loading="lazy" decoding="async">
+      <h3>Satin Collection</h3>
+      <p class="price" data-base="110" data-prefix="From">From $110</p>
+      <div class="album-grid">
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/satin2.jpg" alt="Satin Dress" loading="lazy" decoding="async">
+          <p class="price" data-base="110" data-prefix="Satin Dress">Satin Dress — $110</p>
+          <button class="add-to-cart" data-name="Satin Dress" data-price="110" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/satin3.jpg" alt="Satin Babydoll" loading="lazy" decoding="async">
+          <p class="price" data-base="130" data-prefix="Satin Babydoll">Satin Babydoll — $130</p>
+          <button class="add-to-cart" data-name="Satin Babydoll" data-price="130" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/satin4.jpg" alt="Satin Gown" loading="lazy" decoding="async">
+          <p class="price" data-base="160" data-prefix="Satin Gown">Satin Gown — $160</p>
+          <button class="add-to-cart" data-name="Satin Gown" data-price="160" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Album 4 -->
+    <div class="item album">
+      <img src="Dream Weaver testing file/img of luxury/velvet3.jpg" alt="Velvet Collection" loading="lazy" decoding="async">
+      <h3>Velvet Collection</h3>
+      <p class="price" data-base="105" data-prefix="From">From $105</p>
+      <div class="album-grid">
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/velvet2.jpg" alt="Velvet Robe" loading="lazy" decoding="async">
+          <p class="price" data-base="105" data-prefix="Velvet Robe">Velvet Robe — $105</p>
+          <button class="add-to-cart" data-name="Velvet Robe" data-price="105" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/velvet.jpg" alt="Velvet Chemise" loading="lazy" decoding="async">
+          <p class="price" data-base="125" data-prefix="Velvet Chemise">Velvet Chemise — $125</p>
+          <button class="add-to-cart" data-name="Velvet Chemise" data-price="125" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/velvet1.jpg" alt="Velvet Gown" loading="lazy" decoding="async">
+          <p class="price" data-base="145" data-prefix="Velvet Gown">Velvet Gown — $145</p>
+          <button class="add-to-cart" data-name="Velvet Gown" data-price="145" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Album 5 -->
+    <div class="item album">
+      <img src="Dream Weaver testing file/img of luxury/lace.jpg" alt="Lace Collection" loading="lazy" decoding="async">
+      <h3>Lace Collection</h3>
+      <p class="price" data-base="115" data-prefix="From">From $115</p>
+      <div class="album-grid">
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/lace1.jpg" alt="Lace Babydoll" loading="lazy" decoding="async">
+          <p class="price" data-base="115" data-prefix="Lace Babydoll">Lace Babydoll — $115</p>
+          <button class="add-to-cart" data-name="Lace Babydoll" data-price="115" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/lace2.jpg" alt="Lace Chemise" loading="lazy" decoding="async">
+          <p class="price" data-base="135" data-prefix="Lace Chemise">Lace Chemise — $135</p>
+          <button class="add-to-cart" data-name="Lace Chemise" data-price="135" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/lace3.jpg" alt="Lace Gown" loading="lazy" decoding="async">
+          <p class="price" data-base="155" data-prefix="Lace Gown">Lace Gown — $155</p>
+          <button class="add-to-cart" data-name="Lace Gown" data-price="155" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Album 6 -->
+    <div class="item album">
+      <img src="Dream Weaver testing file/img of luxury/boy silk.jpg" alt="Mixed Collection" loading="lazy" decoding="async">
+      <h3>Mixed Collection</h3>
+      <p class="price" data-base="90" data-prefix="From">From $90</p>
+      <div class="album-grid">
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/night dress.jpg" alt="Night Dress" loading="lazy" decoding="async">
+          <p class="price" data-base="90" data-prefix="Night Dress">Night Dress — $90</p>
+          <button class="add-to-cart" data-name="Night Dress" data-price="90" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/pajams women.jpg" alt="Pajama Set" loading="lazy" decoding="async">
+          <p class="price" data-base="100" data-prefix="Pajama Set">Pajama Set — $100</p>
+          <button class="add-to-cart" data-name="Pajama Set" data-price="100" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+        <div class="sub-item">
+          <img src="Dream Weaver testing file/img of luxury/luxury robe.jpg" alt="Luxury Robe" loading="lazy" decoding="async">
+          <p class="price" data-base="120" data-prefix="Luxury Robe">Luxury Robe — $120</p>
+          <button class="add-to-cart" data-name="Luxury Robe" data-price="120" onclick="addToCart(this)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+      
+            
+
+  <script>
+    // Search suggestions
+    const products = [
+      "Silk Night Dress",
+      "Cotton Pajama Set",
+      "Winter Night Gown",
+      "Summer Night Dress",
+      "Luxury Satin Night Wear"
+    ];
+
+    const searchInput = document.getElementById("searchInput");
+    const suggestionsBox = document.getElementById("suggestions");
+
+    searchInput.addEventListener("keyup", function(){
+      let input = this.value.toLowerCase();
+      suggestionsBox.innerHTML = "";
+
+      if(input){
+        let matches = products.filter(p => p.toLowerCase().includes(input));
+        if(matches.length > 0){
+          suggestionsBox.style.display = "block";
+          matches.forEach(match => {
+            let p = document.createElement("p");
+            p.textContent = match;
+            p.onclick = () => {
+              searchInput.value = match;
+              suggestionsBox.style.display = "none";
+            };
+            suggestionsBox.appendChild(p);
+          });
+        } else {
+          suggestionsBox.style.display = "none";
+        }
+      } else {
+        suggestionsBox.style.display = "none";
+      }
+    });
+
+    // Cart count
+    const CART_COUNT_KEY = "luxury_cart_count";
+    let cartcount = Number.parseInt(localStorage.getItem(CART_COUNT_KEY) || "0", 10);
+    if (!Number.isFinite(cartcount) || cartcount < 0) cartcount = 0;
+
+    function updateCartBadge() {
+      document.getElementById("cartcount").textContent = cartcount;
+      localStorage.setItem(CART_COUNT_KEY, String(cartcount));
+    }
+
+    function addToCart(btn) {
+      cartcount += 1;
+      updateCartBadge();
+
+      // Tiny UX feedback
+      if (btn && btn instanceof HTMLElement) {
+        const old = btn.textContent;
+        btn.textContent = "Added!";
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = old || "Add to Cart";
+          btn.disabled = false;
+        }, 650);
+      }
+    }
+
+    // Toggle menu
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+
+    const BASE_CURRENCY = "USD";
+    let cachedRates = null;
+
+    function formatMoney(amount, currency) {
+      try {
+        return new Intl.NumberFormat(undefined, {
+          style: "currency",
+          currency,
+        }).format(amount);
+      } catch {
+        // Fallback (in case a browser doesn't support the currency code)
+        return `${currency} ${amount.toFixed(2)}`;
+      }
+    }
+
+    function renderPrices(currency, rate) {
+      document.querySelectorAll(".price[data-base]").forEach((el) => {
+        const base = Number.parseFloat(el.dataset.base);
+        const prefix = (el.dataset.prefix || "").trim();
+        if (!Number.isFinite(base)) return;
+
+        const converted = base * rate;
+        const formatted = formatMoney(converted, currency);
+
+        if (prefix.toLowerCase() === "from") {
+          el.textContent = `From ${formatted}`;
+        } else {
+          el.textContent = `${prefix} — ${formatted}`;
+        }
+      });
+    }
+
+    async function getRates() {
+      if (cachedRates) return cachedRates;
+      const res = await fetch("https://open.er-api.com/v6/latest/USD");
+      const data = await res.json();
+      if (!data || data.result !== "success" || !data.rates) {
+        throw new Error("Exchange rate API returned unexpected data");
+      }
+      cachedRates = data.rates;
+      return cachedRates;
+    }
+
+    async function changeCurrency() {
+      const currency = document.getElementById("currencySelector").value;
+
+      try {
+        if (currency === BASE_CURRENCY) {
+          renderPrices(BASE_CURRENCY, 1);
+          return;
+        }
+
+        const rates = await getRates();
+        const rate = rates[currency];
+        if (!rate) throw new Error(`Missing rate for ${currency}`);
+
+        renderPrices(currency, rate);
+      } catch (err) {
+        console.error("Currency conversion failed", err);
+      }
+    }
+
+    // Initialize prices to USD format on load
+    renderPrices(BASE_CURRENCY, 1);
+
+    // Initialize cart badge on load
+    updateCartBadge();
+
+
+    // Carousel
+   let currentSlide = 0;
+let slides = Array.from(document.querySelectorAll(".slides img"));
+
+function getWorkingSlides() {
+  return slides.filter((img) => img.dataset.broken !== "1");
+}
+
+// If an image fails to load, DO NOT remove it (per request).
+// Just mark it as broken and skip it in the carousel.
+slides.forEach((img) => {
+  img.addEventListener("error", () => {
+    img.dataset.broken = "1";
+    img.classList.remove("active");
+    img.style.display = "none";
+
+    const working = getWorkingSlides();
+    if (working.length === 0) return;
+    currentSlide = Math.min(currentSlide, working.length - 1);
+    showSlide(currentSlide);
+  });
+});
+
+function showSlide(index) {
+  const working = getWorkingSlides();
+  slides.forEach((slide) => slide.classList.remove("active"));
+  if (working.length === 0) return;
+
+  const safeIndex = ((index % working.length) + working.length) % working.length;
+  working[safeIndex].classList.add("active");
+}
+
+function moveSlide(step) {
+  const working = getWorkingSlides();
+  if (working.length === 0) return;
+
+  currentSlide = (currentSlide + step + working.length) % working.length;
+  showSlide(currentSlide);
+}
+
+// Auto-play every 4 seconds
+setInterval(() => {
+  moveSlide(1);
+}, 4000);
+
+// Initialize
+showSlide(currentSlide);
+  </script>
+  <footer style="background:#0d0d0d; color:#d9d9d9; padding:60px 20px; font-family:'Poppins', sans-serif;">
+  <div style="max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:40px;">
+    
+    <!-- Brand -->
+    <div>
+      <h2 style="color:#fff; letter-spacing:2px;">Luxury Night Ware</h2>
+      <p style="line-height:1.6;">Premium night wear clothes designed for elegance, comfort, and timeless style. Shop securely and enjoy worldwide delivery.</p>
+    </div>
+    
+    <!-- FAQ & Policy -->
+    <div>
+      <h4 style="color:#fff; margin-bottom:15px;">Customer Care</h4>
+      <ul style="list-style:none; padding:0; line-height:2;">
+        <li><a href="/faq" style="color:#d9d9d9; text-decoration:none;">FAQ</a></li>
+        <li><a href="/return-policy" style="color:#d9d9d9; text-decoration:none;">Return & Refund Policy</a></li>
+        <li><a href="/privacy-policy" style="color:#d9d9d9; text-decoration:none;">Privacy Policy</a></li>
+        <li><a href="/terms" style="color:#d9d9d9; text-decoration:none;">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    
+    <!-- Payment Methods -->
+    <div>
+      <h4 style="color:#fff; margin-bottom:15px;">Payment Options</h4>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">KBZ Pay</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">Wave Pay</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">Pioneer Pay</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">PayPal</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">Visa</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">MasterCard</span>
+        <span style="background:#222; padding:8px 12px; border-radius:6px;">AYA Pay</span>
+      </div>
+    </div>
+    
+    <!-- Contact -->
+    <div>
+      <h4 style="color:#fff; margin-bottom:15px;">Get in Touch</h4>
+      <p>Email: support@luxurynightware.com</p>
+      <p>Phone: +95-xxx-xxx-xxx</p>
+      <p>Yangon, Myanmar</p>
+      <div style="margin-top:10px; display:flex; gap:15px;">
+        <a href="#" style="color:#d9d9d9; text-decoration:none;">🌐 Facebook</a>
+        <a href="#" style="color:#d9d9d9; text-decoration:none;">📸 Instagram</a>
+        <a href="#" style="color:#d9d9d9; text-decoration:none;">🐦 Twitter</a>
+      </div>
+    </div>
+  </div>
+  
+  <hr style="border:0; border-top:1px solid #333; margin:40px 0;">
+  <p style="text-align:center; font-size:14px; color:#999;">
+    © 2026 Luxury Night Ware Clothes. All rights reserved.
+  </p>
+</footer>
+</body>
+</html>

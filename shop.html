@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Night Ware – Shop</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      color: #222;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #222;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      height: 50px;
+      width: auto;
+    }
+
+    #currencySelector {
+      padding: 6px 12px;
+      border-radius: 5px;
+      border: none;
+      background: #f0c040;
+      color: #222;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #currencySelector:hover {
+      background: #d4a017;
+    }
+
+    nav .search-box {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    nav .search-box input {
+      padding: 8px;
+      width: 250px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+    }
+
+    nav .search-box button {
+      padding: 8px 15px;
+      border: none;
+      background: #f0c040;
+      color: #222;
+      border-radius: 2px 7px 7px 2px;
+      cursor: pointer;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    nav ul li a:hover {
+      color: #f0c040;
+    }
+
+    .cart {
+      position: relative;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .cart span {
+      position: absolute;
+      top: -9px;
+      right: -13px;
+      background: crimson;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 5px;
+      font-weight: bold;
+      font-size: 1em;
+    }
+
+    .shop-header {
+      background: linear-gradient(135deg, #222 0%, #444 100%);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .shop-header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #f0c040;
+    }
+
+    .shop-header p {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    .shop-container {
+      max-width: 1400px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      display: block;
+      background: #f5f5f5;
+    }
+
+    .product-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-title {
+      font-size: 1.1em;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 10px;
+      text-transform: capitalize;
+    }
+
+    .product-price {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #f0c040;
+      margin-bottom: 15px;
+    }
+
+    .add-to-cart {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease;
+      font-size: 1em;
+    }
+
+    .add-to-cart:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    .add-to-cart:active {
+      transform: translateY(0);
+    }
+
+    footer {
+      background: #0d0d0d;
+      color: #d9d9d9;
+      padding: 60px 20px;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 80px;
+    }
+
+    footer > div {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    footer h2 {
+      color: #fff;
+      letter-spacing: 2px;
+      border: none;
+      padding: 0;
+    }
+
+    footer h4 {
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      line-height: 2;
+    }
+
+    footer ul li a {
+      color: #d9d9d9;
+      text-decoration: none;
+    }
+
+    footer ul li a:hover {
+      color: #f0c040;
+    }
+
+    .payment-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .payment-badges span {
+      background: #222;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: #d9d9d9;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      color: #f0c040;
+    }
+
+    footer hr {
+      border: 0;
+      border-top: 1px solid #333;
+      margin: 40px 0;
+    }
+
+    footer p {
+      text-align: center;
+      font-size: 14px;
+      color: #999;
+    }
+
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .product-image {
+        height: 280px;
+      }
+
+      .shop-header h1 {
+        font-size: 2em;
+      }
+
+      nav ul {
+        gap: 20px;
+      }
+
+      nav .search-box input {
+        width: 150px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        flex-wrap: wrap;
+      }
+
+      nav .search-box {
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      nav .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="viber_image_2026-01-06_21-22-25-868.jpg"Shop Logo" class="logo">
+    <select id="currencySelector" onchange="changeCurrency()">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="MMK">MMK</option>
+    </select>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search products...">
+      <button>Search</button>
+    </div>
+
+    <ul id="menu">
+      <li><a href="LUXURY Clothes index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="size-guide.index.html">Size Guide</a></li>
+      <li><a href= "contact of luxury.index.html" >Contact</a></li>
+    </ul>
+
+    <div class="cart">
+      🛒<span id="cartcount">0</span>
+    </div>
+  </nav>
+
+  <div class="shop-header">
+    <h1>Luxury Collection</h1>
+    <p>Discover our premium selection of elegant nightwear and loungewear</p>
+  </div>
+
+  <div class="shop-container">
+    <div class="products-grid" id="productsGrid">
+      <!-- Products will be dynamically loaded here -->
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <div>
+        <h2>Luxury Night Ware</h2>
+        <p style="line-height:1.6;">Premium night wear clothes designed for elegance, comfort, and timeless style. Shop securely and enjoy worldwide delivery.</p>
+      </div>
+      
+      <div>
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/return-policy">Return & Refund Policy</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4>Payment Options</h4>
+        <div class="payment-badges">
+          <span>KBZ Pay</span>
+          <span>Wave Pay</span>
+          <span>Pioneer Pay</span>
+          <span>PayPal</span>
+          <span>Visa</span>
+          <span>MasterCard</span>
+          <span>AYA Pay</span>
+        </div>
+      </div>
+      
+      <div>
+        <h4>Get in Touch</h4>
+        <p>Email: support@luxurynightware.com</p>
+        <p>Phone: +95-xxx-xxx-xxx</p>
+        <p>Yangon, Myanmar</p>
+        <div class="social-links">
+          <a href="#">🌐 Facebook</a>
+          <a href="#">📸 Instagram</a>
+          <a href="#">🐦 Twitter</a>
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    <p>© 2026 Luxury Night Ware Clothes. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Product images array
+    const products = [
+      { image: 'bella-pon-fruitsia-wcgCFUi_Zws-unsplash.jpg', name: 'Elegant Night Dress', price: 89.99 },
+      { image: 'boy silk.jpg', name: 'Silk Pajama Set', price: 129.99 },
+      { image: 'cotton gown pj1.jpg', name: 'Cotton Gown', price: 79.99 },
+      { image: 'cotton man.jpg', name: 'Cotton Pajama Set', price: 99.99 },
+      { image: 'cotton set 2.jpg', name: 'Cotton Lounge Set', price: 89.99 },
+      { image: 'girl pajamas1.jpg', name: 'Floral Pajama Set', price: 94.99 },
+      { image: 'lace.jpg', name: 'Lace Nightwear', price: 119.99 },
+      { image: 'lace1.jpg', name: 'Delicate Lace Set', price: 124.99 },
+      { image: 'lace2.jpg', name: 'Lace Elegance', price: 129.99 },
+      { image: 'lace3.jpg', name: 'Lace Collection', price: 134.99 },
+      { image: 'luxury robe.jpg', name: 'Luxury Robe', price: 149.99 },
+      { image: 'night dress.jpg', name: 'Classic Night Dress', price: 109.99 },
+      { image: 'pajams women.jpg', name: 'Women Pajama Set', price: 89.99 },
+      { image: 'photo_2022-06-06_02-24-15.jpg', name: 'Premium Collection', price: 139.99 },
+      { image: 'photo_2022-07-24_22-43-35.jpg', name: 'Luxury Collection', price: 144.99 },
+      { image: 'photo_2023-09-14_20-24-09.jpg', name: 'Elegant Set', price: 119.99 },
+      { image: 'photo_2023-09-14_20-24-27.jpg', name: 'Designer Collection', price: 124.99 },
+      { image: 'satin1.jpg', name: 'Satin Nightwear', price: 114.99 },
+      { image: 'satin2.jpg', name: 'Satin Elegance', price: 119.99 },
+      { image: 'satin3.jpg', name: 'Satin Collection', price: 124.99 },
+      { image: 'satin4.jpg', name: 'Premium Satin', price: 129.99 },
+      { image: 'velvet.jpg', name: 'Velvet Nightwear', price: 134.99 },
+      { image: 'velvet1.jpg', name: 'Velvet Elegance', price: 139.99 },
+      { image: 'velvet2.jpg', name: 'Velvet Collection', price: 144.99 },
+      { image: 'velvet3.jpg', name: 'Luxury Velvet', price: 149.99 }
+    ];
+
+    // Currency conversion rates
+    const currencyRates = {
+      USD: 1,
+      EUR: 0.92,
+      MMK: 2100
+    };
+
+    let currentCurrency = 'USD';
+    let cartCount = 0;
+
+    // Function to format price based on currency
+    function formatPrice(price) {
+      const convertedPrice = price * currencyRates[currentCurrency];
+      const symbols = {
+        USD: '$',
+        EUR: '€',
+        MMK: 'K'
+      };
+      return `${symbols[currentCurrency]}${convertedPrice.toFixed(2)}`;
+    }
+
+    // Function to generate product name from filename
+    function generateProductName(filename) {
+      return filename
+        .replace(/\.(jpg|jpeg|png|webp)$/i, '')
+        .replace(/[-_]/g, ' ')
+        .replace(/\b\w/g, l => l.toUpperCase());
+    }
+
+    // Function to render products
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = '';
+
+      products.forEach((product, index) => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x350?text=Image+Not+Found'">
+          <div class="product-info">
+            <div class="product-title">${product.name}</div>
+            <div class="product-price" id="price-${index}">${formatPrice(product.price)}</div>
+            <button class="add-to-cart" onclick="addToCart(${index})">Add to Cart</button>
+          </div>
+        `;
+        grid.appendChild(productCard);
+      });
+    }
+
+    // Function to update prices when currency changes
+    function changeCurrency() {
+      const selector = document.getElementById('currencySelector');
+      currentCurrency = selector.value;
+      
+      products.forEach((product, index) => {
+        const priceElement = document.getElementById(`price-${index}`);
+        if (priceElement) {
+          priceElement.textContent = formatPrice(product.price);
+        }
+      });
+    }
+
+    // Function to add item to cart
+    function addToCart(index) {
+      cartCount++;
+      document.getElementById('cartcount').textContent = cartCount;
+      
+      // Simple animation feedback
+      const button = event.target;
+      button.textContent = 'Added!';
+      button.style.background = '#28a745';
+      
+      setTimeout(() => {
+        button.textContent = 'Add to Cart';
+        button.style.background = '#222';
+      }, 1000);
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      
+      cards.forEach((card, index) => {
+        const product = products[index];
+        const productName = product.name.toLowerCase();
+        
+        if (productName.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      renderProducts();
+    });
+  </script>
+</body>
+</html>
+
